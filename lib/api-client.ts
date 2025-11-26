@@ -9,8 +9,8 @@ class ApiClient {
 
   constructor() {
     // 프로덕션: 빈 문자열 → 상대 경로 → rewrites 프록시
-    // 개발: http://localhost:8000 → 직접 연결
-    const baseURL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
+    // 개발: .env.local에서 NEXT_PUBLIC_API_URL=http://localhost:8000 설정
+    const baseURL = process.env.NEXT_PUBLIC_API_URL ?? '';
     this.client = axios.create({
       baseURL,
       headers: {

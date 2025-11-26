@@ -34,10 +34,9 @@ export class WebSocketConnection {
 
   constructor(options: ConnectionOptions, logger: Logger) {
     this.apiKey = ""; // 백엔드가 관리
-    this.wsUrl =
-      options.wsUrl ||
-      process.env.NEXT_PUBLIC_WS_URL ||
-      "ws://localhost:8000/api/v2/realtime/ws/prices";
+    // 프로덕션: Vercel에서 NEXT_PUBLIC_WS_URL 설정 필수
+    // 개발: .env.local에서 설정
+    this.wsUrl = options.wsUrl || process.env.NEXT_PUBLIC_WS_URL || "";
     this.maxReconnectAttempts = options.maxReconnectAttempts || 10;
     this.reconnectDelay = options.reconnectDelay || 1000;
     this.maxReconnectDelay = options.maxReconnectDelay || 30000;

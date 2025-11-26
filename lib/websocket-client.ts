@@ -22,9 +22,9 @@ class WebSocketClient {
   private isConnecting = false;
 
   constructor() {
-    this.url = `${
-      process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000"
-    }/api/v2/realtime/ws/prices`;
+    // 프로덕션: Vercel에서 NEXT_PUBLIC_WS_URL 설정 필수
+    // 개발: .env.local에서 NEXT_PUBLIC_WS_URL=ws://localhost:8000/api/v2/realtime/ws/prices 설정
+    this.url = process.env.NEXT_PUBLIC_WS_URL || "";
   }
 
   connect(): Promise<void> {
