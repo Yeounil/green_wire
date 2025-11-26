@@ -62,10 +62,10 @@ class ApiClient {
     }
 
     // HttpOnly 쿠키 기반: 쿠키가 자동으로 전송됨
-    const baseURL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
+    // 프록시를 사용하기 위해 상대 경로 사용 (this.client의 baseURL 활용)
     this.refreshPromise = axios
       .post(
-        `${baseURL}/api/v2/auth/refresh`,
+        `${this.client.defaults.baseURL}/api/v2/auth/refresh`,
         {}, // body 비움 - 쿠키에서 refresh_token 읽음
         {
           headers: {
