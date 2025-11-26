@@ -43,7 +43,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https: blob:",
-      "connect-src 'self' http://localhost:8000 https://*.supabase.co wss://*.financialmodelingprep.com ws://localhost:8000  https://green-wire-backend-1065273606318.asia-northeast1.run.app https://accounts.google.com https://*.googleapis.com",
+      "connect-src 'self' http://localhost:8000 https://*.supabase.co wss://*.financialmodelingprep.com ws://localhost:8000 https://green-wire-backend-1065273606318.asia-northeast1.run.app wss://green-wire-backend-1065273606318.asia-northeast1.run.app https://accounts.google.com https://*.googleapis.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
