@@ -111,8 +111,7 @@ analyze/
 # Storybook
 storybook-static/
 
-# PWA
-**/public/sw.js
+# PWA (sw.js는 직접 커밋)
 **/public/workbox-*.js
 **/public/sw.js.map
 **/public/workbox-*.js.map
