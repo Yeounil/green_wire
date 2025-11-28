@@ -100,7 +100,7 @@ export function SocialLoginButton({
     <Button
       type="button"
       variant="outline"
-      className={`w-full ${config.bgColor} ${config.hoverColor} ${config.textColor} ${config.borderClass}`}
+      className={`w-full h-11 md:h-12 text-base ${config.bgColor} ${config.hoverColor} ${config.textColor} ${config.borderClass}`}
       onClick={onClick}
       disabled={disabled || isLoading}
     >

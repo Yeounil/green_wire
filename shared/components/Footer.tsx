@@ -1,4 +1,5 @@
 import { TrendingUp } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -16,6 +17,22 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground max-w-md">
               AI 기술을 활용한 금융 데이터 분석 및 실시간 시장 정보 제공 플랫폼
             </p>
+          </div>
+
+          {/* Center: Legal Links */}
+          <div className="flex gap-4 text-sm">
+            <Link
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground hover:underline transition-colors"
+            >
+              이용약관
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground hover:underline transition-colors"
+            >
+              개인정보처리방침
+            </Link>
           </div>
 
           {/* Right: Copyright & Investment Warning */}

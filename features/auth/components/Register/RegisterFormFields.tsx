@@ -1,6 +1,8 @@
 import { CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { RegisterFormData } from "../../services/authService";
 import { FormInput, PasswordStrength } from "@/shared/components/FormInput";
 import { ValidationState } from "@/hooks/useFormValidation";
@@ -11,6 +13,9 @@ interface RegisterFormFieldsProps {
   displayError: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (fieldName: string, value: string) => void;
+  onConsentChange: (field: 'agreeTerms' | 'agreePrivacy' | 'agreeMarketing', checked: boolean) => void;
+  onAgreeAll: (checked: boolean) => void;
+  isAllAgreed: boolean;
   validationState: ValidationState;
   isFormValid: boolean;
 }
@@ -25,11 +30,14 @@ export function RegisterFormFields({
   displayError,
   onChange,
   onBlur,
+  onConsentChange,
+  onAgreeAll,
+  isAllAgreed,
   validationState,
   isFormValid,
 }: RegisterFormFieldsProps) {
   return (
-    <CardContent className="space-y-4">
+    <CardContent className="space-y-4 px-0 pb-0">
       {displayError && (
         <div className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive animate-fade-in">
           {displayError}
@@ -93,9 +101,75 @@ export function RegisterFormFields({
         disabled={isLoading}
       />
 
+      {/* 약관 동의 섹션 */}
+      <div className="space-y-3 pt-4 border-t">
+        {/* 전체 동의 */}
+        <label className="flex items-center gap-3 cursor-pointer">
+          <Checkbox
+            checked={isAllAgreed}
+            onCheckedChange={(checked) => onAgreeAll(checked === true)}
+            disabled={isLoading}
+          />
+          <span className="font-medium text-sm">전체 동의</span>
+        </label>
+
+        <div className="pl-1 space-y-2">
+          {/* 이용약관 동의 (필수) */}
+          <label className="flex items-center gap-3 cursor-pointer">
+            <Checkbox
+              checked={formData.agreeTerms}
+              onCheckedChange={(checked) => onConsentChange('agreeTerms', checked === true)}
+              disabled={isLoading}
+            />
+            <span className="text-sm flex-1">
+              <span className="text-destructive">[필수]</span> 이용약관 동의
+            </span>
+            <Link
+              href="/terms"
+              target="_blank"
+              className="text-xs text-muted-foreground hover:text-primary hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              보기
+            </Link>
+          </label>
+
+          {/* 개인정보처리방침 동의 (필수) */}
+          <label className="flex items-center gap-3 cursor-pointer">
+            <Checkbox
+              checked={formData.agreePrivacy}
+              onCheckedChange={(checked) => onConsentChange('agreePrivacy', checked === true)}
+              disabled={isLoading}
+            />
+            <span className="text-sm flex-1">
+              <span className="text-destructive">[필수]</span> 개인정보처리방침 동의
+            </span>
+            <Link
+              href="/privacy"
+              target="_blank"
+              className="text-xs text-muted-foreground hover:text-primary hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              보기
+            </Link>
+          </label>
+
+          {/* 마케팅 수신 동의 (선택) */}
+          <label className="flex items-center gap-3 cursor-pointer">
+            <Checkbox
+              checked={formData.agreeMarketing}
+              onCheckedChange={(checked) => onConsentChange('agreeMarketing', checked === true)}
+              disabled={isLoading}
+            />
+            <span className="text-sm text-muted-foreground flex-1">
+              [선택] 마케팅 정보 수신 동의 (이메일, 푸시)
+            </span>
+          </label>
+        </div>
+      </div>
+
       <Button
-        className="w-full"
-        size="lg"
+        className="w-full h-11 md:h-12 text-base"
         type="submit"
         disabled={isLoading || !isFormValid}
       >

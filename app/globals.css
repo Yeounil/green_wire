@@ -52,6 +52,45 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  /* Green Wire 브랜드 컬러 */
+  --gw-green: #00a63e;
+  --gw-green-light: #00c94a;
+  --gw-green-dark: #008a33;
+  --gw-glow: 0 0 20px rgba(0, 166, 62, 0.3);
+  --gw-glow-lg: 0 0 40px rgba(0, 166, 62, 0.4);
+  /* WarmOrganic 색상 변수 (Sage Green + Sand Beige) */
+  /* Sage Green (Primary) */
+  --sage-50: #f8faf7;
+  --sage-100: #e8ede5;
+  --sage-200: #d1dac9;
+  --sage-300: #b4c4a8;
+  --sage-400: #8fa87d;
+  --sage-500: #6b8e5c;
+  --sage-600: #567345;
+  --sage-700: #425933;
+  /* Sand Beige (Secondary) */
+  --sand-50: #fdfcfa;
+  --sand-100: #f7f4ef;
+  --sand-200: #ebe5db;
+  --sand-300: #ddd4c5;
+  /* Terracotta (Accent) */
+  --terra-100: #f9ede8;
+  --terra-200: #f0d5c9;
+  --terra-400: #d4a188;
+  --terra-500: #c88b6c;
+  /* Warm Gray (Neutral) */
+  --warm-gray-500: #8b8780;
+  --warm-gray-700: #4a4843;
+  --warm-gray-900: #2b2925;
+  /* Special Colors */
+  --honey: #e8c170;
+  --coral: #e89b7f;
+  --mint: #b8d4c4;
+  /* Shadow System (Warm) */
+  --shadow-sm: 2px 4px 8px rgba(107, 142, 92, 0.08);
+  --shadow-md: 4px 6px 12px rgba(107, 142, 92, 0.1);
+  --shadow-lg: 6px 8px 16px rgba(107, 142, 92, 0.12);
+  --shadow-xl: 8px 12px 24px rgba(107, 142, 92, 0.15);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -89,8 +128,28 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #1a1815;
+  --foreground: #f5f4f2;
+  /* WarmOrganic 다크모드 */
+  --sage-50: #1a1815;
+  --sage-100: #252320;
+  --sage-200: #333028;
+  --sage-400: #9eb88c;
+  --sage-500: #7d9e6d;
+  --sage-600: #9eb88c;
+  --sage-700: #b4c4a8;
+  --sand-50: #1a1815;
+  --sand-100: #252320;
+  --sand-200: #2b2925;
+  --sand-300: #3d3a35;
+  --warm-gray-500: #a8a49d;
+  --warm-gray-700: #d1cdc5;
+  --warm-gray-900: #f5f4f2;
+  /* Shadow → Sage Glow */
+  --shadow-sm: 2px 4px 8px rgba(125, 158, 109, 0.1);
+  --shadow-md: 4px 6px 12px rgba(125, 158, 109, 0.12);
+  --shadow-lg: 6px 8px 16px rgba(125, 158, 109, 0.15);
+  --shadow-xl: 8px 12px 24px rgba(125, 158, 109, 0.18);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -166,6 +225,95 @@
 }
 
 @layer utilities {
+  /* 랜딩 페이지 기본 스타일 */
+  .landing-page {
+    background: var(--sand-50);
+  }
+
+  /* Bento Grid 레이아웃 */
+  .bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Bento 카드 스타일 */
+  .bento-card {
+    background: white;
+    border: 1px solid var(--sand-200);
+    border-radius: 16px;
+    padding: 24px;
+    @apply transition-all duration-300;
+  }
+  .bento-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--sage-300);
+  }
+  .bento-card-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  @media (max-width: 768px) {
+    .bento-card-large {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+  }
+
+  /* Glassmorphism 카드 */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    @apply transition-all duration-300;
+  }
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* 배지 스타일 */
+  .badge-primary {
+    background: var(--sage-100);
+    color: var(--sage-700);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+  }
+
+  /* 신뢰 로고 스타일 */
+  .trust-logo {
+    filter: grayscale(100%) opacity(0.5);
+    @apply transition-all duration-300;
+  }
+  .trust-logo:hover {
+    filter: grayscale(0%) opacity(1);
+  }
+
+  /* 부드러운 페이드인 애니메이션 */
+  @keyframes gentle-fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-gentle-fade-up {
+    animation: gentle-fade-up 0.6s ease-out;
+  }
+
+  /* 손글씨 폰트 클래스 */
+  .font-handwritten {
+    font-family: var(--font-caveat), 'Caveat', cursive;
+  }
+
   /* Indeterminate progress bar animation */
   @keyframes progress-indeterminate {
     0% {

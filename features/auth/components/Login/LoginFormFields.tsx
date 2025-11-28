@@ -23,7 +23,7 @@ export function LoginFormFields({
   onChange,
 }: LoginFormFieldsProps) {
   return (
-    <CardContent className="space-y-6 px-6 pb-8">
+    <CardContent className="space-y-6 px-0 pb-0">
       {error && (
         <div className="rounded-lg bg-destructive/10 p-4 text-sm md:text-base text-destructive">
           {error}

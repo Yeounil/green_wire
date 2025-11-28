@@ -22,6 +22,9 @@ export function useRegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    agreeTerms: false,
+    agreePrivacy: false,
+    agreeMarketing: false,
   });
   const [validationError, setValidationError] = useState("");
 
@@ -111,6 +114,30 @@ export function useRegisterForm() {
     );
   };
 
+  // 약관 동의 체크박스 변경 핸들러
+  const handleConsentChange = (field: 'agreeTerms' | 'agreePrivacy' | 'agreeMarketing', checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: checked,
+    }));
+  };
+
+  // 전체 동의 토글
+  const handleAgreeAll = (checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      agreeTerms: checked,
+      agreePrivacy: checked,
+      agreeMarketing: checked,
+    }));
+  };
+
+  // 전체 동의 체크 여부
+  const isAllAgreed = formData.agreeTerms && formData.agreePrivacy && formData.agreeMarketing;
+
+  // 필수 약관 동의 여부 체크 (폼 유효성에 포함)
+  const isConsentsValid = formData.agreeTerms && formData.agreePrivacy;
+
   const displayError = error || validationError;
 
   return {
@@ -120,7 +147,10 @@ export function useRegisterForm() {
     handleSubmit,
     handleChange,
     handleBlur,
+    handleConsentChange,
+    handleAgreeAll,
+    isAllAgreed,
     validationState,
-    isFormValid,
+    isFormValid: isFormValid && isConsentsValid,
   };
 }

@@ -8,6 +8,9 @@ export interface RegisterFormData {
   email: string;
   password: string;
   confirmPassword: string;
+  agreeTerms: boolean;      // 이용약관 동의 (필수)
+  agreePrivacy: boolean;    // 개인정보처리방침 동의 (필수)
+  agreeMarketing: boolean;  // 마케팅 수신 동의 (선택)
 }
 
 export interface LoginFormData {
@@ -34,6 +37,15 @@ export function validateRegisterForm(
   // Validate password length
   if (formData.password.length < 6) {
     return "비밀번호는 최소 6자 이상이어야 합니다";
+  }
+
+  // Validate required consents
+  if (!formData.agreeTerms) {
+    return "이용약관에 동의해주세요";
+  }
+
+  if (!formData.agreePrivacy) {
+    return "개인정보처리방침에 동의해주세요";
   }
 
   return null;

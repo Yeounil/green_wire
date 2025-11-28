@@ -19,6 +19,9 @@ export function RegisterFormContainer() {
     handleSubmit,
     handleChange,
     handleBlur,
+    handleConsentChange,
+    handleAgreeAll,
+    isAllAgreed,
     validationState,
     isFormValid,
   } = useRegisterForm();
@@ -34,6 +37,9 @@ export function RegisterFormContainer() {
             displayError={displayError}
             onChange={handleChange}
             onBlur={handleBlur}
+            onConsentChange={handleConsentChange}
+            onAgreeAll={handleAgreeAll}
+            isAllAgreed={isAllAgreed}
             validationState={validationState}
             isFormValid={isFormValid}
           />

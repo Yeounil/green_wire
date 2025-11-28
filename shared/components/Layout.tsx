@@ -34,6 +34,9 @@ export default function Layout({ children, showFooter = true }: LayoutProps) {
   // Check if current page is login/register
   const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/';
 
+  // 랜딩 페이지에서는 자체 Header/Footer 사용
+  const isLandingPage = pathname === '/';
+
   useEffect(() => {
     // Check authentication status on mount
     fetchUser();
@@ -80,9 +83,9 @@ export default function Layout({ children, showFooter = true }: LayoutProps) {
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
-        <Header />
-        <main className="flex-1 px-4 md:px-6 lg:px-8">{children}</main>
-        {showFooter && <Footer />}
+        {!isLandingPage && <Header />}
+        <main className={isLandingPage ? "flex-1" : "flex-1 px-4 md:px-6 lg:px-8"}>{children}</main>
+        {showFooter && !isLandingPage && <Footer />}
       </div>
 
       {/* Bottom Navigation - Hidden for now, kept for future use */}

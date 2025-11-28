@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_KR } from "next/font/google";
+import { Inter, Noto_Sans_KR, Caveat } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Layout from "@/shared/components/Layout";
@@ -20,6 +20,15 @@ const notoSansKR = Noto_Sans_KR({
   display: "swap",
   preload: true,
   variable: "--font-noto-sans-kr",
+});
+
+// Caveat - 손글씨 폰트 (WarmOrganic 스타일용)
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  preload: true,
+  variable: "--font-caveat",
 });
 
 
@@ -70,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning className={`${inter.variable} ${notoSansKR.variable}`}>
+    <html lang="ko" suppressHydrationWarning className={`${inter.variable} ${notoSansKR.variable} ${caveat.variable}`}>
       <body className={`${inter.className} ${notoSansKR.className} antialiased`}>
         <Providers>
           <Layout>{children}</Layout>
