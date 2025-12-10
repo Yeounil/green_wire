@@ -11,3 +11,4 @@ export { default as ScrollRevealSection } from "./ScrollRevealSection";
 export { default as ComparisonSection } from "./ComparisonSection";
 export { default as UrgencyCTA } from "./UrgencyCTA";
 export { default as WhyGreenWireSection } from "./WhyGreenWireSection";
+export { default as EmailSignupForm } from "./EmailSignupForm";

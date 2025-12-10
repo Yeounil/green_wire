@@ -1,20 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { toast } from "sonner";
-import CTAButton from "./CTAButton";
-
-// 서비스 준비 중 모드 (환경변수로 관리)
-const COMING_SOON_MODE = process.env.NEXT_PUBLIC_COMING_SOON === "true";
 
 export default function LandingHeader() {
-  const handleLoginClick = (e: React.MouseEvent) => {
-    if (COMING_SOON_MODE) {
-      e.preventDefault();
-      toast.info("곧 출시 예정입니다! 조금만 기다려주세요.", {
-        duration: 3000,
-      });
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -27,22 +17,14 @@ export default function LandingHeader() {
         <Link href="/" className="text-xl font-bold text-gw-green" aria-label="Green Wire 홈">
           Green Wire
         </Link>
-        <div className="flex items-center gap-4">
-          <a
-            href={COMING_SOON_MODE ? "#" : "/login"}
-            onClick={handleLoginClick}
-            className="cursor-pointer text-sm text-gw-gray-600 dark:text-gw-gray-400 hover:text-gw-black dark:hover:text-white transition-colors"
-          >
-            로그인
-          </a>
-          <CTAButton
-            href="/register"
-            location="header"
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={scrollToTop}
             className="px-4 py-2 bg-gw-green hover:bg-gw-green-light text-white rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md"
-            ariaLabel="무료로 시작하기"
+            aria-label="출시 알림 받기"
           >
-            무료로 받아보기
-          </CTAButton>
+            출시 알림 받기
+          </button>
         </div>
       </nav>
     </header>

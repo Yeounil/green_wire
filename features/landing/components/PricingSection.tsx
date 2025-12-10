@@ -1,12 +1,13 @@
-import Link from "next/link";
+"use client";
+
 import { Check } from "lucide-react";
 
 interface PricingPlan {
   name: string;
   description: string;
   price: string;
+  yearlyPrice?: string;
   period: string;
-  discount?: string;
   features: string[];
   recommended?: boolean;
 }
@@ -18,35 +19,38 @@ const plans: PricingPlan[] = [
     price: "₩0",
     period: "/월",
     features: [
-      "관심 종목 10개",
-      "리포트 구독 1개",
-      "주 1회 리포트 발송",
-      "뉴스 감성 분석",
+      "일 3토큰 지급",
+      "뉴스 분석 레포트",
+      "실시간 알림",
+      "PDF 다운로드",
     ],
   },
   {
     name: "베이직",
     description: "대부분의 투자자에게 추천",
     price: "₩12,900",
+    yearlyPrice: "₩129,000",
     period: "/월",
     features: [
-      "관심 종목 30개",
-      "리포트 구독 5개",
-      "매일 리포트 발송",
-      "재무/기술 분석 포함",
+      "일 10토큰 지급",
+      "뉴스 + 재무제표 분석",
+      "주간 레포트 메일 (5종목)",
+      "실시간 알림",
     ],
     recommended: true,
   },
   {
     name: "프로",
-    description: "다종목 투자자를 위한",
+    description: "전문 투자자를 위한",
     price: "₩29,900",
+    yearlyPrice: "₩299,000",
     period: "/월",
     features: [
-      "관심 종목 무제한",
-      "리포트 구독 15개",
-      "매일 리포트 발송",
-      "실적/AI 종합의견 포함",
+      "일 20토큰 지급",
+      "13가지 지표 분석",
+      "기술적 차트 분석 포함",
+      "AI 금융 챗봇",
+      "주간 레포트 메일 (10종목)",
     ],
   },
 ];
@@ -89,25 +93,28 @@ export default function PricingSection() {
                 {plan.name}
               </h3>
 
-              <p className="mb-1">
-                <span className="text-3xl md:text-4xl font-bold text-gw-black dark:text-white">
-                  {plan.price}
-                </span>
-                <span className="text-sm text-gw-gray-500">
-                  {plan.period}
-                </span>
-              </p>
-
-              {plan.discount && (
-                <p className="text-xs text-gw-green font-medium mb-6">
-                  {plan.discount}
+              <div className="mb-6">
+                <p>
+                  <span className="text-3xl md:text-4xl font-bold text-gw-black dark:text-white">
+                    {plan.price}
+                  </span>
+                  <span className="text-sm text-gw-gray-500">
+                    {plan.period}
+                  </span>
                 </p>
-              )}
-              {!plan.discount && <div className="mb-6" />}
+                {plan.yearlyPrice && (
+                  <p className="mt-1 text-xs text-gw-green font-medium">
+                    연간 결제 시 {plan.yearlyPrice}/년
+                  </p>
+                )}
+              </div>
 
               <ul className="space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3 text-sm text-gw-gray-600 dark:text-gw-gray-400">
+                  <li
+                    key={feature}
+                    className="flex items-start gap-3 text-sm text-gw-gray-600 dark:text-gw-gray-400"
+                  >
                     <Check className="w-5 h-5 text-gw-green shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
@@ -119,14 +126,14 @@ export default function PricingSection() {
 
         {/* 단일 CTA */}
         <div className="mt-12 md:mt-16 text-center">
-          <Link
-            href="/register"
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="inline-block px-10 py-4 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-xl text-lg transition-colors"
           >
-            무료로 시작하기
-          </Link>
+            출시 알림 받기
+          </button>
           <p className="mt-4 text-sm text-gw-gray-500">
-            신용카드 없이 시작 · 언제든 업그레이드
+            사전등록 시 Pro 1달 무료
           </p>
         </div>
       </div>
