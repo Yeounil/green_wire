@@ -42,7 +42,7 @@ export default function EmailSignupForm({ className }: EmailSignupFormProps) {
         <button
           type="submit"
           disabled={isPending}
-          className="px-6 py-3 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-md whitespace-nowrap"
+          className="cursor-pointer px-6 py-3 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-md whitespace-nowrap"
         >
           {isPending ? "등록 중..." : "알림 받기"}
         </button>
