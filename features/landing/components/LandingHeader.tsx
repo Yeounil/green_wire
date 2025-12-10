@@ -20,7 +20,7 @@ export default function LandingHeader() {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={scrollToTop}
-            className="px-4 py-2 bg-gw-green hover:bg-gw-green-light text-white rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md"
+            className="cursor-pointer px-4 py-2 bg-gw-green hover:bg-gw-green-light text-white rounded-lg text-sm font-medium transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md"
             aria-label="출시 알림 받기"
           >
             출시 알림 받기

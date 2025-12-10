@@ -15,7 +15,7 @@ export default function MobileCTA() {
       >
         <button
           onClick={scrollToTop}
-          className="block w-full py-4 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-lg text-center shadow-md"
+          className="cursor-pointer block w-full py-4 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-lg text-center shadow-md"
           aria-label="출시 알림 받기"
         >
           출시 알림 받기

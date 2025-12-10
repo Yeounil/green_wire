@@ -128,7 +128,7 @@ export default function PricingSection() {
         <div className="mt-12 md:mt-16 text-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-block px-10 py-4 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-xl text-lg transition-colors"
+            className="cursor-pointer inline-block px-10 py-4 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-xl text-lg transition-colors"
           >
             출시 알림 받기
           </button>
