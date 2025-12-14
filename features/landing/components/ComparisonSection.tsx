@@ -17,9 +17,9 @@ const comparisons = [
     after: "5분",
   },
   {
-    item: "빈도",
+    item: "생성 방식",
     before: "불규칙 (시간 날 때)",
-    after: "매일 아침 이메일",
+    after: "토큰으로 즉시 생성",
   },
   {
     item: "분석 범위",
@@ -37,7 +37,7 @@ export default function ComparisonSection() {
             기존 방식 vs Green Wire
           </h2>
           <p className="text-lg text-gw-gray-600 dark:text-gw-gray-400">
-            매일 아침 뉴스 확인, 이렇게 달라집니다
+            뉴스 확인, 이렇게 달라집니다
           </p>
         </div>
 

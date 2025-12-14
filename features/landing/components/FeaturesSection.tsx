@@ -109,20 +109,20 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          {/* 기능 3: 이메일 리포트 */}
+          {/* 기능 3: 온디맨드 리포트 */}
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <span className="text-sm font-medium text-gw-green mb-4 block">
-                03 — 매일 아침 리포트
+                03 — 온디맨드 리포트
               </span>
               <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gw-black dark:text-white">
-                출근 전 5분,
+                필요할 때 바로,
                 <br />
-                어젯밤 뉴스 확인
+                AI 분석 리포트
               </h3>
               <p className="text-gw-gray-600 dark:text-gw-gray-400 leading-relaxed">
-                관심 종목을 등록하면 매일 아침 이메일로 AI 분석 리포트가
-                도착합니다. 바쁜 아침에도 놓치는 뉴스 없이 챙길 수 있어요.
+                토큰을 사용해 원하는 종목의 AI 분석 리포트를 즉시 생성하세요.
+                필요할 때 바로 확인할 수 있어요.
               </p>
             </div>
 
@@ -136,7 +136,7 @@ export default function FeaturesSection() {
                   <p className="text-sm font-bold text-gw-black dark:text-white">
                     Green Wire
                   </p>
-                  <p className="text-xs text-gw-gray-500">오전 7:00</p>
+                  <p className="text-xs text-gw-gray-500">방금 전</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-gw-gray-800 border border-gw-gray-200 dark:border-gw-gray-700 rounded-lg p-4 space-y-3">

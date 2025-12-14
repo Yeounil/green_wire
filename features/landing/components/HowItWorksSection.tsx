@@ -4,20 +4,20 @@ const steps = [
   {
     num: 1,
     icon: Search,
-    title: "종목 등록",
-    description: "관심 있는 미국 주식을 검색해서 등록하세요. 5분이면 충분해요.",
+    title: "종목 검색",
+    description: "관심 있는 미국 주식을 검색하세요. 1분이면 충분해요.",
   },
   {
     num: 2,
     icon: Sparkles,
-    title: "AI가 분석",
-    description: "밤새 나온 뉴스를 AI가 읽고, 호재/악재를 분류해요.",
+    title: "리포트 생성",
+    description: "토큰을 사용해 AI 분석 리포트를 즉시 생성하세요.",
   },
   {
     num: 3,
     icon: Mail,
-    title: "아침에 확인",
-    description: "출근 전 이메일로 받아보세요. 5분이면 어젯밤 뉴스 끝.",
+    title: "바로 확인",
+    description: "생성된 리포트를 바로 확인하세요. 호재/악재 한눈에 파악.",
   },
 ];
 

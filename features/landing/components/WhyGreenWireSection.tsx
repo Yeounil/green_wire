@@ -13,8 +13,8 @@ const benefits = [
   },
   {
     icon: Mail,
-    title: "매일 아침 배송",
-    description: "출근 전 5분이면 충분",
+    title: "즉시 리포트 생성",
+    description: "토큰으로 원할 때 바로",
   },
   {
     icon: Languages,
