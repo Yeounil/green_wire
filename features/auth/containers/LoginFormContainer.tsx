@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { useLoginForm } from "../hooks/useLoginForm";
 import { LoginFormHeader } from "../components/Login/LoginFormHeader";
 import { LoginFormFields } from "../components/Login/LoginFormFields";
@@ -16,9 +15,9 @@ export function LoginFormContainer() {
     useLoginForm();
 
   return (
-    <Card className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+    <div className="w-full border-2 border-gw-green bg-gw-gray-900 transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0_#00a63e]">
       <LoginFormHeader />
-      <div className="p-6 pt-0 space-y-6">
+      <div className="px-6 md:px-8 pb-6 space-y-6">
         <form onSubmit={handleSubmit}>
           <LoginFormFields
             formData={formData}
@@ -30,6 +29,6 @@ export function LoginFormContainer() {
         <SocialLoginSection />
       </div>
       <LoginFormFooter />
-    </Card>
+    </div>
   );
 }

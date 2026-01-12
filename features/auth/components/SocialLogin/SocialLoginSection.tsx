@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { SocialLoginButton } from "./SocialLoginButton";
-import { Separator } from "@/components/ui/separator";
 import apiClient from "@/lib/api-client";
 
 export function SocialLoginSection() {
@@ -29,20 +28,17 @@ export function SocialLoginSection() {
 
   return (
     <div className="space-y-4">
-      {/* Separator */}
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <Separator />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            또는
-          </span>
-        </div>
+      {/* Brutalist Separator */}
+      <div className="relative flex items-center gap-4 py-2">
+        <div className="flex-1 h-[2px] bg-gw-green/30" />
+        <span className="text-xs font-bold uppercase tracking-widest text-gw-gray-400 font-syne px-2">
+          또는
+        </span>
+        <div className="flex-1 h-[2px] bg-gw-green/30" />
       </div>
 
       {/* Social Login Buttons */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         <SocialLoginButton
           provider="kakao"
           onClick={() => handleSocialLogin("kakao")}

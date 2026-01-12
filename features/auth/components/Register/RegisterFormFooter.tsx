@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { CardFooter } from "@/components/ui/card";
 
 /**
  * RegisterFormFooter Component
@@ -7,16 +6,16 @@ import { CardFooter } from "@/components/ui/card";
  */
 export function RegisterFormFooter() {
   return (
-    <CardFooter className="flex flex-col gap-4 text-center text-sm">
-      <p className="text-muted-foreground">
+    <div className="px-6 md:px-8 py-6 border-t-2 border-gw-green/20 text-center">
+      <p className="text-gw-gray-400 font-syne">
         이미 계정이 있으신가요?{" "}
         <Link
           href="/login"
-          className="font-medium text-primary underline-offset-4 hover:underline"
+          className="text-gw-green font-bold uppercase tracking-wider hover:translate-x-[-2px] hover:translate-y-[-2px] inline-block transition-transform duration-150"
         >
-          로그인
+          로그인 &rarr;
         </Link>
       </p>
-    </CardFooter>
+    </div>
   );
 }

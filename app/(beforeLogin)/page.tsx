@@ -16,7 +16,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-gw-black text-white">
       <LandingHeader />
       <HeroSection />
       <ScrollRevealSection>

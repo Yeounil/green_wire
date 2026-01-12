@@ -5,9 +5,10 @@ import { subscribeToWaitlist } from "../actions/waitlist";
 
 interface EmailSignupFormProps {
   className?: string;
+  variant?: "default" | "light";
 }
 
-export default function EmailSignupForm({ className }: EmailSignupFormProps) {
+export default function EmailSignupForm({ className, variant = "default" }: EmailSignupFormProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -27,6 +28,8 @@ export default function EmailSignupForm({ className }: EmailSignupFormProps) {
     });
   };
 
+  const isLight = variant === "light";
+
   return (
     <div className={className}>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -37,30 +40,59 @@ export default function EmailSignupForm({ className }: EmailSignupFormProps) {
           placeholder="이메일 주소"
           required
           disabled={isPending}
-          className="flex-1 px-4 py-3 rounded-lg border border-gw-gray-300 dark:border-gw-gray-700 bg-white dark:bg-gw-gray-800 text-gw-black dark:text-white placeholder:text-gw-gray-500 focus:outline-none focus:ring-2 focus:ring-gw-green focus:border-transparent disabled:opacity-50"
+          className={`
+            flex-1 px-5 py-4 text-base font-syne
+            border-2 transition-all duration-150
+            placeholder:text-gw-gray-500
+            disabled:opacity-50
+            brutal-focus
+            ${isLight
+              ? "bg-white border-gw-black text-gw-black focus:border-gw-green focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[4px_4px_0_#00a63e]"
+              : "bg-gw-gray-900 border-gw-green text-white focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[4px_4px_0_#00a63e]"
+            }
+          `}
         />
         <button
           type="submit"
           disabled={isPending}
-          className="cursor-pointer px-6 py-3 bg-gw-green hover:bg-gw-green-light text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-md whitespace-nowrap"
+          className={`
+            cursor-pointer px-8 py-4 font-bold uppercase tracking-wider text-sm font-syne
+            border-2 transition-all duration-150
+            disabled:opacity-50 disabled:cursor-not-allowed
+            whitespace-nowrap
+            ${isLight
+              ? "bg-gw-black border-gw-black text-white hover:bg-gw-green hover:border-gw-green hover:text-gw-black hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#0a0a0a]"
+              : "bg-gw-green border-gw-green text-gw-black hover:bg-transparent hover:text-gw-green hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#00a63e]"
+            }
+          `}
         >
-          {isPending ? "등록 중..." : "알림 받기"}
+          {isPending ? (
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              등록 중
+            </span>
+          ) : (
+            "알림 받기 →"
+          )}
         </button>
       </form>
 
       {message && (
-        <p
-          className={`mt-3 text-sm ${
-            isSuccess ? "text-gw-green" : "text-red-500"
-          }`}
+        <div
+          className={`
+            mt-4 px-4 py-3 border-2 text-sm font-syne
+            ${isSuccess
+              ? "border-gw-green bg-gw-green/10 text-gw-green"
+              : "border-red-500 bg-red-500/10 text-red-500"
+            }
+          `}
         >
           {message}
-        </p>
+        </div>
       )}
-
-      <p className="mt-3 text-sm text-gw-gray-500 dark:text-gw-gray-500">
-        스팸 없음
-      </p>
     </div>
   );
 }

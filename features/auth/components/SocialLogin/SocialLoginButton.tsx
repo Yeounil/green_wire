@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
 interface SocialLoginButtonProps {
@@ -13,14 +12,14 @@ interface SocialLoginButtonProps {
 const providerConfig = {
   kakao: {
     name: "카카오",
-    bgColor: "bg-[#FEE500] dark:bg-[#FEE500]/90",
-    hoverColor: "hover:bg-[#FDD835] dark:hover:bg-[#FEE500]",
-    textColor: "text-[#000000] dark:text-[#000000]",
-    borderClass: "dark:border dark:border-[#FEE500]/30",
+    bgColor: "bg-[#FEE500]",
+    borderColor: "border-[#FEE500]",
+    textColor: "text-gw-black",
+    hoverShadow: "hover:shadow-[4px_4px_0_#FDD835]",
     icon: (
       <svg
-        width="18"
-        height="18"
+        width="20"
+        height="20"
         viewBox="0 0 18 18"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +33,14 @@ const providerConfig = {
   },
   google: {
     name: "Google",
-    bgColor: "bg-white dark:bg-zinc-800",
-    hoverColor: "hover:bg-gray-50 dark:hover:bg-zinc-700",
-    textColor: "text-gray-700 dark:text-gray-200",
-    borderClass: "border border-gray-300 dark:border-zinc-600",
+    bgColor: "bg-white",
+    borderColor: "border-gw-gray-300",
+    textColor: "text-gw-gray-700",
+    hoverShadow: "hover:shadow-[4px_4px_0_#e5e5e5]",
     icon: (
       <svg
-        width="18"
-        height="18"
+        width="20"
+        height="20"
         viewBox="0 0 18 18"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -67,14 +66,14 @@ const providerConfig = {
   },
   naver: {
     name: "네이버",
-    bgColor: "bg-[#03C75A] dark:bg-[#03C75A]/90",
-    hoverColor: "hover:bg-[#02B350] dark:hover:bg-[#03C75A]",
+    bgColor: "bg-[#03C75A]",
+    borderColor: "border-[#03C75A]",
     textColor: "text-white",
-    borderClass: "dark:border dark:border-[#03C75A]/30",
+    hoverShadow: "hover:shadow-[4px_4px_0_#02B350]",
     icon: (
       <svg
-        width="18"
-        height="18"
+        width="20"
+        height="20"
         viewBox="0 0 18 18"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -97,19 +96,25 @@ export function SocialLoginButton({
   const config = providerConfig[provider];
 
   return (
-    <Button
+    <button
       type="button"
-      variant="outline"
-      className={`w-full h-11 md:h-12 text-base ${config.bgColor} ${config.hoverColor} ${config.textColor} ${config.borderClass}`}
       onClick={onClick}
       disabled={disabled || isLoading}
+      className={`
+        w-full px-6 py-4 font-bold text-sm font-syne
+        border-2 transition-all duration-150
+        flex items-center justify-center gap-3
+        hover:translate-x-[-2px] hover:translate-y-[-2px]
+        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-none
+        ${config.bgColor} ${config.borderColor} ${config.textColor} ${config.hoverShadow}
+      `}
     >
       {isLoading ? (
-        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+        <Loader2 className="h-5 w-5 animate-spin" />
       ) : (
-        <span className="mr-2">{config.icon}</span>
+        <span>{config.icon}</span>
       )}
-      {config.name}로 계속하기
-    </Button>
+      <span className="uppercase tracking-wider">{config.name}로 계속하기</span>
+    </button>
   );
 }
