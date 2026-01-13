@@ -13,9 +13,8 @@ const providerConfig = {
   kakao: {
     name: "카카오",
     bgColor: "bg-[#FEE500]",
-    borderColor: "border-[#FEE500]",
+    hoverBgColor: "hover:bg-[#FDD835]",
     textColor: "text-gw-black",
-    hoverShadow: "hover:shadow-[4px_4px_0_#FDD835]",
     icon: (
       <svg
         width="20"
@@ -34,9 +33,8 @@ const providerConfig = {
   google: {
     name: "Google",
     bgColor: "bg-white",
-    borderColor: "border-gw-gray-300",
-    textColor: "text-gw-gray-700",
-    hoverShadow: "hover:shadow-[4px_4px_0_#e5e5e5]",
+    hoverBgColor: "hover:bg-gray-50",
+    textColor: "text-gray-700",
     icon: (
       <svg
         width="20"
@@ -67,9 +65,8 @@ const providerConfig = {
   naver: {
     name: "네이버",
     bgColor: "bg-[#03C75A]",
-    borderColor: "border-[#03C75A]",
+    hoverBgColor: "hover:bg-[#02B350]",
     textColor: "text-white",
-    hoverShadow: "hover:shadow-[4px_4px_0_#02B350]",
     icon: (
       <svg
         width="20"
@@ -101,12 +98,11 @@ export function SocialLoginButton({
       onClick={onClick}
       disabled={disabled || isLoading}
       className={`
-        w-full px-6 py-4 font-bold text-sm font-syne
-        border-2 transition-all duration-150
+        cursor-pointer w-full px-6 py-3.5 font-medium text-sm
+        rounded-xl transition-all duration-200
         flex items-center justify-center gap-3
-        hover:translate-x-[-2px] hover:translate-y-[-2px]
-        disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-none
-        ${config.bgColor} ${config.borderColor} ${config.textColor} ${config.hoverShadow}
+        disabled:opacity-50 disabled:cursor-not-allowed
+        ${config.bgColor} ${config.hoverBgColor} ${config.textColor}
       `}
     >
       {isLoading ? (
@@ -114,7 +110,7 @@ export function SocialLoginButton({
       ) : (
         <span>{config.icon}</span>
       )}
-      <span className="uppercase tracking-wider">{config.name}로 계속하기</span>
+      <span>{config.name}로 계속하기</span>
     </button>
   );
 }

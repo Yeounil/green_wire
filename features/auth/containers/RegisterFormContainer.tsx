@@ -26,7 +26,7 @@ export function RegisterFormContainer() {
   } = useRegisterForm();
 
   return (
-    <div className="w-full border-2 border-gw-green bg-gw-gray-900 transition-all duration-200 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0_#00a63e]">
+    <div className="w-full fintech-card-static rounded-2xl overflow-hidden">
       <RegisterFormHeader />
       <div className="px-6 md:px-8 pb-6 space-y-6">
         <form onSubmit={handleSubmit}>

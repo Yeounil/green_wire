@@ -54,22 +54,22 @@ export function ReportDemo() {
 
   return (
     <div className="w-full">
-      {/* Report Card - Brutalist Style */}
-      <div className="bg-gw-gray-900 border-2 border-gw-green overflow-hidden">
+      {/* Report Card - Modern Fintech Style */}
+      <div className="fintech-card-static overflow-hidden shadow-2xl shadow-black/50">
         {/* Header */}
-        <div className="px-5 py-4 border-b-2 border-gw-green/30 bg-gw-black">
+        <div className="px-5 py-4 border-b border-white/5 bg-gw-black/50">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-3">
-              {/* Terminal-style indicator */}
-              <div className="flex items-center gap-1">
-                <span className="w-2 h-2 bg-gw-green brutal-pulse" />
-                <span className="w-2 h-2 bg-gw-green/50" />
-                <span className="w-2 h-2 bg-gw-green/30" />
+              {/* Status indicator */}
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-gw-green animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-gw-green/40" />
+                <span className="w-2 h-2 rounded-full bg-gw-green/20" />
               </div>
-              <span className="font-bebas text-2xl text-gw-green tracking-wider">
+              <span className="text-xl font-bold text-gw-green tracking-tight">
                 {SAMPLE_REPORT.symbol}
               </span>
-              <span className="text-xs text-gw-gray-500 font-syne uppercase tracking-wider">
+              <span className="text-xs text-gw-gray-500">
                 {SAMPLE_REPORT.company}
               </span>
             </div>
@@ -77,56 +77,56 @@ export function ReportDemo() {
               {SAMPLE_REPORT.date}
             </span>
           </div>
-          <p className="text-xs text-gw-gray-400 font-mono uppercase tracking-wider">
+          <p className="text-xs text-gw-gray-400">
             {SAMPLE_REPORT.analyzedCount}개 뉴스 분석 완료
           </p>
         </div>
 
         {/* Sentiment Analysis */}
-        <div className="px-5 py-4 border-b-2 border-gw-green/30">
-          <p className="text-xs font-bold text-gw-gray-400 mb-3 uppercase tracking-widest font-syne">
+        <div className="px-5 py-4 border-b border-white/5">
+          <p className="text-xs font-medium text-gw-gray-400 mb-3 uppercase tracking-wider">
             감성 분석
           </p>
           <div className="grid grid-cols-3 gap-2" role="group" aria-label="감성 분석 결과">
             {/* Positive */}
-            <div className="text-center p-3 border-2 border-gw-green bg-gw-green/10">
+            <div className="text-center p-3 rounded-xl bg-gw-green/10 border border-gw-green/20">
               <div className="flex items-center justify-center gap-1.5 mb-1">
                 <TrendingUp className="w-4 h-4 text-gw-green" aria-hidden="true" />
-                <span className="font-bebas text-3xl text-gw-green">
+                <span className="text-2xl font-bold text-gw-green">
                   {SAMPLE_REPORT.sentiment.positive}
                 </span>
               </div>
-              <span className="text-xs text-gw-gray-300 uppercase tracking-wider font-syne">긍정</span>
+              <span className="text-xs text-gw-gray-400">긍정</span>
             </div>
             {/* Neutral */}
-            <div className="text-center p-3 border-2 border-gw-gray-600 bg-gw-gray-800/50">
+            <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10">
               <div className="flex items-center justify-center gap-1.5 mb-1">
                 <Minus className="w-4 h-4 text-gw-gray-400" aria-hidden="true" />
-                <span className="font-bebas text-3xl text-gw-gray-400">
+                <span className="text-2xl font-bold text-gw-gray-400">
                   {SAMPLE_REPORT.sentiment.neutral}
                 </span>
               </div>
-              <span className="text-xs text-gw-gray-300 uppercase tracking-wider font-syne">중립</span>
+              <span className="text-xs text-gw-gray-400">중립</span>
             </div>
             {/* Negative */}
-            <div className="text-center p-3 border-2 border-red-500/50 bg-red-500/10">
+            <div className="text-center p-3 rounded-xl bg-red-500/10 border border-red-500/20">
               <div className="flex items-center justify-center gap-1.5 mb-1">
-                <TrendingDown className="w-4 h-4 text-red-500" aria-hidden="true" />
-                <span className="font-bebas text-3xl text-red-500">
+                <TrendingDown className="w-4 h-4 text-red-400" aria-hidden="true" />
+                <span className="text-2xl font-bold text-red-400">
                   {SAMPLE_REPORT.sentiment.negative}
                 </span>
               </div>
-              <span className="text-xs text-gw-gray-300 uppercase tracking-wider font-syne">부정</span>
+              <span className="text-xs text-gw-gray-400">부정</span>
             </div>
           </div>
         </div>
 
         {/* Summary */}
-        <div className="px-5 py-4 border-b-2 border-gw-green/30">
-          <p className="text-xs font-bold text-gw-gray-400 mb-3 uppercase tracking-widest font-syne">
+        <div className="px-5 py-4 border-b border-white/5">
+          <p className="text-xs font-medium text-gw-gray-400 mb-3 uppercase tracking-wider">
             핵심 요약
           </p>
-          <p className="text-base text-gw-gray-300 leading-relaxed font-syne">
+          <p className="text-base text-gw-gray-300 leading-relaxed">
             {SAMPLE_REPORT.summary}
           </p>
         </div>
@@ -138,20 +138,20 @@ export function ReportDemo() {
           style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
         >
           <div className="overflow-hidden">
-            <div className="px-5 py-4 border-b-2 border-gw-green/30">
-              <p className="text-xs font-bold text-gw-gray-400 mb-3 uppercase tracking-widest font-syne">
+            <div className="px-5 py-4 border-b border-white/5">
+              <p className="text-xs font-medium text-gw-gray-400 mb-3 uppercase tracking-wider">
                 주요 발견사항
               </p>
               <ul className="space-y-3" role="list">
                 {SAMPLE_REPORT.keyFindings.map((finding, i) => (
                   <li
                     key={i}
-                    className="flex gap-3 text-base text-white font-syne"
+                    className="flex gap-3 text-base text-white"
                   >
-                    <span className="text-gw-green font-mono shrink-0" aria-hidden="true">
-                      [{String(i + 1).padStart(2, '0')}]
+                    <span className="text-gw-green font-mono text-sm shrink-0 mt-0.5" aria-hidden="true">
+                      0{i + 1}
                     </span>
-                    <span>{finding}</span>
+                    <span className="text-gw-gray-300">{finding}</span>
                   </li>
                 ))}
               </ul>
@@ -160,10 +160,14 @@ export function ReportDemo() {
         </div>
 
         {/* More Sections Preview */}
-        <div className="px-5 py-3 bg-gw-black/50" aria-hidden="true">
-          <p className="text-xs text-gw-gray-500 text-center font-mono">
-            + {MORE_SECTIONS.join(" / ")}
-          </p>
+        <div className="px-5 py-3 bg-gw-black/30" aria-hidden="true">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {MORE_SECTIONS.map((section) => (
+              <span key={section} className="fintech-tag text-xs">
+                {section}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Expand Button */}
@@ -171,9 +175,9 @@ export function ReportDemo() {
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
           aria-controls="report-key-findings"
-          className="cursor-pointer w-full px-5 py-3 bg-gw-green/10 hover:bg-gw-green/20 border-t-2 border-gw-green/30 transition-colors flex items-center justify-center gap-2 group"
+          className="cursor-pointer w-full px-5 py-3 bg-gw-green/5 hover:bg-gw-green/10 border-t border-white/5 transition-colors flex items-center justify-center gap-2 group"
         >
-          <span className="text-sm font-bold text-gw-green uppercase tracking-wider font-syne">
+          <span className="text-sm font-medium text-gw-green">
             {isExpanded ? "접기" : "발견사항 보기"}
           </span>
           <ChevronDown

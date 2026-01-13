@@ -3,17 +3,12 @@ import { LoginFormContainer } from "@/features/auth/containers/LoginFormContaine
 export default function LoginPage() {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-12 px-4 bg-gw-black overflow-hidden">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 brutal-grid opacity-50" />
+      {/* Background Glow */}
+      <div className="absolute inset-0 fintech-bg-glow opacity-50" />
 
-      {/* Top Green Line */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gw-green" />
-
-      {/* Floating Decorative Elements */}
-      <div className="absolute top-20 left-8 w-2 h-16 bg-gw-green animate-float hidden lg:block" />
-      <div className="absolute top-40 right-16 w-16 h-2 bg-gw-green/50 animate-float-delay hidden lg:block" />
-      <div className="absolute bottom-32 left-16 w-8 h-8 border-2 border-gw-green/30 hidden lg:block" />
-      <div className="absolute bottom-20 right-8 w-2 h-24 bg-gw-green/30 animate-float-slow hidden lg:block" />
+      {/* Subtle gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gw-green/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gw-green/5 rounded-full blur-3xl" />
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-md">

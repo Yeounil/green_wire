@@ -6,61 +6,79 @@ import EmailSignupForm from "./EmailSignupForm";
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 md:pb-24 bg-gw-black overflow-x-hidden">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 brutal-grid opacity-50" />
+      {/* Background Glow */}
+      <div className="absolute inset-0 fintech-bg-glow" />
 
-      {/* Diagonal Accent Line */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gw-green/5 to-transparent transform skew-x-12 origin-top-right" />
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gw-black/50" />
 
-      {/* Floating Elements - with animations */}
-      <div className="absolute top-32 left-8 w-2 h-20 bg-gw-green animate-float hidden lg:block" />
-      <div className="absolute bottom-40 right-16 w-16 h-2 bg-gw-green animate-float-delay hidden lg:block" />
-      <div className="absolute top-1/3 right-1/4 w-4 h-4 border-2 border-gw-green rotate-45 animate-float-slow hidden lg:block" />
+      {/* Floating Elements - Soft glowing orbs */}
+      <div className="absolute top-32 left-[10%] w-64 h-64 bg-gw-green/5 rounded-full blur-3xl animate-fintech-float hidden lg:block" />
+      <div className="absolute bottom-32 right-[10%] w-48 h-48 bg-gw-green/8 rounded-full blur-3xl animate-fintech-float hidden lg:block" style={{ animationDelay: '-2s' }} />
 
       <div className="max-w-7xl mx-auto relative z-10 w-full px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text Content */}
           <div className="text-left">
             {/* Badge */}
-            <div className="hero-animate hero-animate-delay-1 inline-flex items-center gap-2 mb-6 px-4 py-2 border-2 border-gw-green bg-gw-green/10">
-              <span className="w-2 h-2 bg-gw-green brutal-pulse" />
-              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-gw-green font-syne">
-                2026년 3월 출시
+            <div className="animate-fintech-fade-up inline-flex items-center gap-2 mb-8">
+              <span className="fintech-badge">
+                <span className="w-1.5 h-1.5 rounded-full bg-gw-green animate-pulse" />
+                <span className="text-xs font-medium">
+                  2026년 3월 출시 예정
+                </span>
               </span>
             </div>
 
-            {/* Main Headline - Brutalist Typography */}
+            {/* Main Headline */}
             <h1 className="mb-6">
-              <span className="hero-animate hero-animate-delay-2 block font-bebas text-5xl md:text-7xl lg:text-8xl text-white leading-none tracking-wide">
+              <span
+                className="block text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight animate-fintech-fade-up"
+                style={{ animationDelay: '0.1s' }}
+              >
                 궁금한 종목?
               </span>
-              <span className="hero-animate hero-animate-delay-3 block font-bebas text-5xl md:text-7xl lg:text-8xl text-gw-green leading-none tracking-wide mt-2">
+              <span
+                className="block text-4xl md:text-5xl lg:text-6xl font-bold text-gw-green leading-tight tracking-tight mt-2 fintech-text-glow animate-fintech-fade-up"
+                style={{ animationDelay: '0.2s' }}
+              >
                 바로 AI 분석
               </span>
             </h1>
 
             {/* Subheadline */}
-            <p className="hero-animate hero-animate-delay-3 text-lg md:text-xl text-gw-gray-400 mb-4 max-w-lg font-syne leading-relaxed">
+            <p
+              className="text-lg md:text-xl text-gw-gray-400 mb-6 max-w-lg leading-relaxed animate-fintech-fade-up"
+              style={{ animationDelay: '0.3s' }}
+            >
               매일 지급되는 토큰으로
               <br />
               원하는 종목을 분석하세요.
             </p>
 
             {/* Benefit Highlight */}
-            <div className="hero-animate hero-animate-delay-4 flex items-center gap-3 mb-8">
-              <div className="w-8 h-[2px] bg-gw-green" />
-              <span className="text-gw-green font-bold text-sm uppercase tracking-wider font-syne">
+            <div
+              className="flex items-center gap-3 mb-8 animate-fintech-fade-up"
+              style={{ animationDelay: '0.35s' }}
+            >
+              <span className="fintech-tag-green px-3 py-1.5 rounded-full text-sm font-medium">
                 사전등록 시 Pro 1달 무료
               </span>
             </div>
 
             {/* Email Form */}
-            <div className="hero-animate hero-animate-delay-4">
+            <div
+              className="animate-fintech-fade-up"
+              style={{ animationDelay: '0.4s' }}
+            >
               <EmailSignupForm className="w-full max-w-md" />
             </div>
 
             {/* Trust Indicators */}
-            <div className="hero-animate hero-animate-delay-5 mt-8 flex items-center gap-6 text-sm text-gw-gray-400 uppercase tracking-wider font-syne">
+            <div
+              className="mt-8 flex items-center gap-6 text-sm text-gw-gray-500 animate-fintech-fade-up"
+              style={{ animationDelay: '0.5s' }}
+            >
               <span className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-gw-green" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -77,10 +95,13 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Report Demo */}
-          <div className="hero-animate hero-animate-delay-3 relative lg:pl-4 lg:pt-4">
-            {/* Decorative Frame - inside padding area */}
-            <div className="absolute top-0 left-0 w-full h-full border-2 border-gw-green/30 hidden lg:block" />
-            <div className="relative lg:translate-x-2 lg:translate-y-2">
+          <div
+            className="relative animate-fintech-fade-up"
+            style={{ animationDelay: '0.3s' }}
+          >
+            {/* Subtle glow behind demo */}
+            <div className="absolute -inset-4 bg-gw-green/5 rounded-3xl blur-2xl hidden lg:block" />
+            <div className="relative">
               <ReportDemo />
             </div>
           </div>
@@ -88,9 +109,14 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Scroll Indicator */}
-      <div className="hero-animate hero-animate-delay-5 absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs uppercase tracking-[0.3em] text-gw-gray-400 font-syne">Scroll</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-gw-green to-transparent" />
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-fintech-fade-up"
+        style={{ animationDelay: '0.6s' }}
+      >
+        <span className="text-xs tracking-widest text-gw-gray-500 uppercase">Scroll</span>
+        <div className="w-5 h-8 rounded-full border border-white/20 flex justify-center pt-2">
+          <div className="w-1 h-2 rounded-full bg-gw-green animate-bounce" />
+        </div>
       </div>
     </section>
   );

@@ -37,13 +37,13 @@ export function RegisterFormFields({
   return (
     <div className="space-y-4 pt-6">
       {displayError && (
-        <div className="border-2 border-red-500 bg-red-500/10 p-3 text-sm text-red-500 font-syne animate-shake">
+        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-400 animate-shake">
           {displayError}
         </div>
       )}
 
       <FormInput
-        variant="brutal"
+        variant="fintech"
         label="사용자명"
         fieldName="username"
         type="text"
@@ -58,7 +58,7 @@ export function RegisterFormFields({
       />
 
       <FormInput
-        variant="brutal"
+        variant="fintech"
         label="이메일"
         fieldName="email"
         type="email"
@@ -73,7 +73,7 @@ export function RegisterFormFields({
 
       <div className="space-y-2">
         <FormInput
-          variant="brutal"
+          variant="fintech"
           label="비밀번호"
           fieldName="password"
           type="password"
@@ -86,11 +86,11 @@ export function RegisterFormFields({
           required
           disabled={isLoading}
         />
-        <PasswordStrength password={formData.password} variant="brutal" />
+        <PasswordStrength password={formData.password} variant="fintech" />
       </div>
 
       <FormInput
-        variant="brutal"
+        variant="fintech"
         label="비밀번호 확인"
         fieldName="confirmPassword"
         type="password"
@@ -104,16 +104,16 @@ export function RegisterFormFields({
       />
 
       {/* 약관 동의 섹션 */}
-      <div className="space-y-3 pt-4 border-t-2 border-gw-green/20">
+      <div className="space-y-3 pt-4 border-t border-white/5">
         {/* 전체 동의 */}
         <label className="flex items-center gap-3 cursor-pointer group">
           <Checkbox
             checked={isAllAgreed}
             onCheckedChange={(checked) => onAgreeAll(checked === true)}
             disabled={isLoading}
-            className="h-5 w-5 border-2 border-gw-green rounded-none data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
+            className="h-5 w-5 border border-white/20 rounded data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
           />
-          <span className="font-syne font-bold text-sm text-gw-gray-300 group-hover:text-gw-green transition-colors uppercase tracking-wider">
+          <span className="font-medium text-sm text-gw-gray-300 group-hover:text-white transition-colors">
             전체 동의
           </span>
         </label>
@@ -125,15 +125,15 @@ export function RegisterFormFields({
               checked={formData.agreeTerms}
               onCheckedChange={(checked) => onConsentChange('agreeTerms', checked === true)}
               disabled={isLoading}
-              className="h-4 w-4 border-2 border-gw-green/50 rounded-none data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
+              className="h-4 w-4 border border-white/10 rounded data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
             />
-            <span className="text-sm font-syne text-gw-gray-400 flex-1 group-hover:text-gw-gray-300 transition-colors">
-              <span className="text-red-500 font-bold">[필수]</span> 이용약관 동의
+            <span className="text-sm text-gw-gray-400 flex-1 group-hover:text-gw-gray-300 transition-colors">
+              <span className="text-red-400 font-medium">[필수]</span> 이용약관 동의
             </span>
             <Link
               href="/terms"
               target="_blank"
-              className="text-xs text-gw-gray-500 hover:text-gw-green font-syne uppercase tracking-wider"
+              className="text-xs text-gw-gray-500 hover:text-gw-green transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               보기
@@ -146,15 +146,15 @@ export function RegisterFormFields({
               checked={formData.agreePrivacy}
               onCheckedChange={(checked) => onConsentChange('agreePrivacy', checked === true)}
               disabled={isLoading}
-              className="h-4 w-4 border-2 border-gw-green/50 rounded-none data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
+              className="h-4 w-4 border border-white/10 rounded data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
             />
-            <span className="text-sm font-syne text-gw-gray-400 flex-1 group-hover:text-gw-gray-300 transition-colors">
-              <span className="text-red-500 font-bold">[필수]</span> 개인정보처리방침 동의
+            <span className="text-sm text-gw-gray-400 flex-1 group-hover:text-gw-gray-300 transition-colors">
+              <span className="text-red-400 font-medium">[필수]</span> 개인정보처리방침 동의
             </span>
             <Link
               href="/privacy"
               target="_blank"
-              className="text-xs text-gw-gray-500 hover:text-gw-green font-syne uppercase tracking-wider"
+              className="text-xs text-gw-gray-500 hover:text-gw-green transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               보기
@@ -167,9 +167,9 @@ export function RegisterFormFields({
               checked={formData.agreeMarketing}
               onCheckedChange={(checked) => onConsentChange('agreeMarketing', checked === true)}
               disabled={isLoading}
-              className="h-4 w-4 border-2 border-gw-green/50 rounded-none data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
+              className="h-4 w-4 border border-white/10 rounded data-[state=checked]:bg-gw-green data-[state=checked]:border-gw-green"
             />
-            <span className="text-sm font-syne text-gw-gray-500 flex-1 group-hover:text-gw-gray-400 transition-colors">
+            <span className="text-sm text-gw-gray-500 flex-1 group-hover:text-gw-gray-400 transition-colors">
               [선택] 마케팅 정보 수신 동의 (이메일, 푸시)
             </span>
           </label>
@@ -179,7 +179,7 @@ export function RegisterFormFields({
       <button
         type="submit"
         disabled={isLoading || !isFormValid}
-        className="w-full px-8 py-4 font-bold uppercase tracking-wider text-sm font-syne bg-gw-green border-2 border-gw-green text-gw-black transition-all duration-150 hover:bg-transparent hover:text-gw-green hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#00a63e] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gw-green disabled:hover:text-gw-black disabled:hover:translate-x-0 disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center justify-center gap-2"
+        className="cursor-pointer w-full fintech-btn-primary py-4 text-base font-medium flex items-center justify-center gap-2"
       >
         {isLoading ? (
           <>

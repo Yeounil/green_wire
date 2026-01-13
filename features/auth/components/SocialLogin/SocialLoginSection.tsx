@@ -28,13 +28,13 @@ export function SocialLoginSection() {
 
   return (
     <div className="space-y-4">
-      {/* Brutalist Separator */}
+      {/* Separator */}
       <div className="relative flex items-center gap-4 py-2">
-        <div className="flex-1 h-[2px] bg-gw-green/30" />
-        <span className="text-xs font-bold uppercase tracking-widest text-gw-gray-400 font-syne px-2">
+        <div className="flex-1 h-px bg-white/10" />
+        <span className="text-xs text-gw-gray-500 px-2">
           또는
         </span>
-        <div className="flex-1 h-[2px] bg-gw-green/30" />
+        <div className="flex-1 h-px bg-white/10" />
       </div>
 
       {/* Social Login Buttons */}

@@ -16,7 +16,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   showAllErrors?: boolean;
   enableShake?: boolean;
   onFieldBlur?: (fieldName: string, value: string) => void;
-  variant?: "default" | "brutal";
+  variant?: "default" | "brutal" | "fintech";
 }
 
 /**
@@ -49,6 +49,7 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
       validation?.isTouched;
 
     const isBrutal = variant === "brutal";
+    const isFintech = variant === "fintech";
 
     // Trigger shake animation when error appears
     useEffect(() => {
@@ -152,6 +153,95 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             <p
               id={`${fieldName}-hint`}
               className="text-xs text-gw-gray-500 font-syne animate-fade-in"
+            >
+              {hint}
+            </p>
+          )}
+        </div>
+      );
+    }
+
+    // Fintech variant
+    if (isFintech) {
+      return (
+        <div className="space-y-2">
+          <label
+            htmlFor={fieldName}
+            className={cn(
+              "block text-sm font-medium transition-colors duration-200",
+              showError ? "text-red-400" : "text-gw-gray-300"
+            )}
+          >
+            {label}
+            {props.required && <span className="text-red-400 ml-1">*</span>}
+          </label>
+
+          <div className={cn("relative", shouldShake && "animate-shake")}>
+            <input
+              ref={ref}
+              id={fieldName}
+              name={fieldName}
+              className={cn(
+                "fintech-input w-full pr-12",
+                showError && "border-red-500/50 focus:border-red-500 focus:ring-red-500/20",
+                showSuccess && "border-gw-green/50 focus:border-gw-green",
+                className
+              )}
+              aria-invalid={showError}
+              aria-describedby={
+                showError
+                  ? `${fieldName}-error`
+                  : hint
+                  ? `${fieldName}-hint`
+                  : undefined
+              }
+              {...props}
+              onBlur={handleBlur}
+            />
+
+            {/* Validation Icon */}
+            {validation?.isDirty && (
+              <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                {showError ? (
+                  <X className="h-5 w-5 text-red-400 animate-scale-in" />
+                ) : showSuccess ? (
+                  <Check className="h-5 w-5 text-gw-green animate-scale-in" />
+                ) : null}
+              </div>
+            )}
+          </div>
+
+          {/* Error Messages */}
+          {showError && validation.errors.length > 0 && (
+            <div
+              id={`${fieldName}-error`}
+              className="space-y-1 animate-slide-down overflow-hidden"
+              role="alert"
+            >
+              {showAllErrors ? (
+                validation.errors.map((error, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-1.5 text-xs text-red-400"
+                  >
+                    <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                ))
+              ) : (
+                <div className="flex items-start gap-1.5 text-xs text-red-400">
+                  <AlertCircle className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                  <span>{validation.errors[0]}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Hint Text */}
+          {hint && !showError && (
+            <p
+              id={`${fieldName}-hint`}
+              className="text-xs text-gw-gray-500 animate-fade-in"
             >
               {hint}
             </p>
@@ -323,7 +413,7 @@ export function FormErrorSummary({
 
 interface PasswordStrengthProps {
   password: string;
-  variant?: "default" | "brutal";
+  variant?: "default" | "brutal" | "fintech";
 }
 
 /**
@@ -354,8 +444,30 @@ export function PasswordStrength({ password, variant = "default" }: PasswordStre
 
   const { level, text, color } = getStrength(password);
   const isBrutal = variant === "brutal";
+  const isFintech = variant === "fintech";
 
   if (!password) return null;
+
+  if (isFintech) {
+    return (
+      <div className="space-y-2 pt-1 animate-fade-in">
+        <div className="flex gap-1">
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className={cn(
+                "h-1 flex-1 rounded-full transition-all duration-300",
+                i <= level ? color : "bg-white/10"
+              )}
+            />
+          ))}
+        </div>
+        <p className="text-xs text-gw-gray-500">
+          비밀번호 강도: <span className="font-medium text-gw-gray-300">{text}</span>
+        </p>
+      </div>
+    );
+  }
 
   if (isBrutal) {
     return (

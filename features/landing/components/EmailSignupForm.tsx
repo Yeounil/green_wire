@@ -41,14 +41,14 @@ export default function EmailSignupForm({ className, variant = "default" }: Emai
           required
           disabled={isPending}
           className={`
-            flex-1 px-5 py-4 text-base font-syne
-            border-2 transition-all duration-150
+            flex-1 px-4 py-3.5 text-base rounded-xl
+            transition-all duration-200
             placeholder:text-gw-gray-500
             disabled:opacity-50
-            brutal-focus
+            focus:outline-none
             ${isLight
-              ? "bg-white border-gw-black text-gw-black focus:border-gw-green focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[4px_4px_0_#00a63e]"
-              : "bg-gw-gray-900 border-gw-green text-white focus:translate-x-[-2px] focus:translate-y-[-2px] focus:shadow-[4px_4px_0_#00a63e]"
+              ? "bg-white border border-gw-gray-200 text-gw-black focus:border-gw-green focus:ring-2 focus:ring-gw-green/20"
+              : "bg-gw-gray-900/80 border border-white/10 text-white focus:border-gw-green/50 focus:ring-2 focus:ring-gw-green/10"
             }
           `}
         />
@@ -56,18 +56,18 @@ export default function EmailSignupForm({ className, variant = "default" }: Emai
           type="submit"
           disabled={isPending}
           className={`
-            cursor-pointer px-8 py-4 font-bold uppercase tracking-wider text-sm font-syne
-            border-2 transition-all duration-150
+            cursor-pointer px-6 py-3.5 font-semibold text-sm rounded-xl
+            transition-all duration-200
             disabled:opacity-50 disabled:cursor-not-allowed
             whitespace-nowrap
             ${isLight
-              ? "bg-gw-black border-gw-black text-white hover:bg-gw-green hover:border-gw-green hover:text-gw-black hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#0a0a0a]"
-              : "bg-gw-green border-gw-green text-gw-black hover:bg-transparent hover:text-gw-green hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#00a63e]"
+              ? "bg-gw-black text-white hover:bg-gw-gray-800 shadow-lg shadow-gw-black/20"
+              : "fintech-btn-primary"
             }
           `}
         >
           {isPending ? (
-            <span className="flex items-center gap-2">
+            <span className="flex items-center justify-center gap-2">
               <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
@@ -75,7 +75,12 @@ export default function EmailSignupForm({ className, variant = "default" }: Emai
               등록 중
             </span>
           ) : (
-            "알림 받기 →"
+            <span className="flex items-center gap-2">
+              알림 받기
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
           )}
         </button>
       </form>
@@ -83,10 +88,10 @@ export default function EmailSignupForm({ className, variant = "default" }: Emai
       {message && (
         <div
           className={`
-            mt-4 px-4 py-3 border-2 text-sm font-syne
+            mt-4 px-4 py-3 rounded-xl text-sm
             ${isSuccess
-              ? "border-gw-green bg-gw-green/10 text-gw-green"
-              : "border-red-500 bg-red-500/10 text-red-500"
+              ? "bg-gw-green/10 border border-gw-green/30 text-gw-green"
+              : "bg-red-500/10 border border-red-500/30 text-red-400"
             }
           `}
         >
