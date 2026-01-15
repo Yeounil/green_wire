@@ -42,11 +42,11 @@ const SAMPLE_REPORT: DemoReport = {
 };
 
 const MORE_SECTIONS = [
-  "시장 반응",
-  "주가 영향",
-  "경쟁사 분석",
-  "리스크",
-  "투자 권고",
+  "거시경제 분석",
+  "시장 데이터",
+  "섹터 동향",
+  "리스크 요인",
+  "객관적 전망",
 ];
 
 export function ReportDemo() {

@@ -11,14 +11,14 @@ const steps = [
   {
     num: "02",
     icon: Sparkles,
-    title: "AI가 분석",
-    description: "밤새 나온 뉴스를 AI가 읽고, 호재/악재를 분류해요.",
+    title: "AI가 종합 분석",
+    description: "뉴스와 거시경제 데이터를 종합해 객관적 보고서를 생성해요.",
   },
   {
     num: "03",
     icon: Mail,
     title: "아침에 확인",
-    description: "출근 전 이메일로 받아보세요. 5분이면 어젯밤 뉴스 끝.",
+    description: "출근 전 이메일로 애널리스트 보고서를 받아보세요.",
   },
 ];
 

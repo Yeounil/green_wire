@@ -5,8 +5,8 @@ const benefits = [
   {
     icon: Layers,
     num: "01",
-    title: "20개+ 뉴스 종합",
-    description: "하나씩 읽지 않아도 전체 흐름 파악",
+    title: "뉴스 + 거시경제 종합",
+    description: "시장 전체 흐름을 한눈에 파악",
   },
   {
     icon: Brain,
@@ -23,8 +23,8 @@ const benefits = [
   {
     icon: Languages,
     num: "04",
-    title: "자연스러운 한국어",
-    description: "금융 용어도 정확하게",
+    title: "중립적·객관적 분석",
+    description: "데이터 기반 애널리스트 시각",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function WhyGreenWireSection() {
             왜 Green Wire인가요?
           </h2>
           <p className="mt-6 text-lg text-gw-gray-400">
-            미국 주식 뉴스, 더 쉽게 읽는 방법
+            뉴스와 거시경제를 종합한 데이터 기반 보고서
           </p>
         </ScrollReveal>
 

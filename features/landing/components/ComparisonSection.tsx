@@ -25,7 +25,7 @@ const comparisons = [
   {
     item: "분석 범위",
     before: "보이는 뉴스만",
-    after: "주요 매체 종합",
+    after: "뉴스 + 거시경제 종합",
   },
 ];
 

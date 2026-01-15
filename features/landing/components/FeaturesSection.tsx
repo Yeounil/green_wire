@@ -154,8 +154,8 @@ export default function FeaturesSection() {
                 <span className="text-gw-green">어젯밤 뉴스 확인</span>
               </h3>
               <p className="text-base text-gw-gray-400 leading-relaxed">
-                관심 종목을 등록하면 매일 아침 이메일로 AI 분석 리포트가
-                도착합니다. 바쁜 아침에도 놓치는 뉴스 없이 챙길 수 있어요.
+                관심 종목을 등록하면 매일 아침 이메일로 종합 애널리스트 보고서가
+                도착합니다. 뉴스와 거시경제를 객관적 시각으로 분석해 드려요.
               </p>
             </div>
 
@@ -177,9 +177,9 @@ export default function FeaturesSection() {
                 <div className="bg-gw-black/50 rounded-xl p-4 border border-white/5">
                   <div className="flex items-center justify-between mb-3">
                     <p className="font-bold text-white">
-                      NVDA AI 분석 리포트
+                      NVDA 종합 애널리스트 보고서
                     </p>
-                    <span className="text-xs text-gw-gray-500">20개 뉴스</span>
+                    <span className="text-xs text-gw-gray-500">20개 뉴스 + 거시경제</span>
                   </div>
 
                   {/* Sentiment Mini */}
@@ -204,7 +204,7 @@ export default function FeaturesSection() {
 
                   <div className="pt-3 border-t border-white/5">
                     <div className="flex gap-2 flex-wrap">
-                      {["주가 영향 예측", "경쟁사 분석", "투자 권고"].map((tag) => (
+                      {["거시경제 분석", "시장 데이터", "객관적 전망"].map((tag) => (
                         <span key={tag} className="fintech-tag text-xs">
                           {tag}
                         </span>
