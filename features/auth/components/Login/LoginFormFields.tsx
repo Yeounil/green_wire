@@ -1,7 +1,3 @@
-import { CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { LoginFormData } from "../../services/authService";
 
@@ -23,48 +19,64 @@ export function LoginFormFields({
   onChange,
 }: LoginFormFieldsProps) {
   return (
-    <CardContent className="space-y-6 px-0 pb-0">
+    <div className="space-y-5 pt-6">
       {error && (
-        <div className="rounded-lg bg-destructive/10 p-4 text-sm md:text-base text-destructive">
+        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400 animate-shake">
           {error}
         </div>
       )}
-      <div className="space-y-3">
-        <Label htmlFor="username" className="text-base md:text-lg">사용자명</Label>
-        <Input
+      <div className="space-y-2">
+        <label
+          htmlFor="username"
+          className="block text-sm font-medium text-gw-gray-300"
+        >
+          사용자명
+        </label>
+        <input
           id="username"
+          name="username"
           type="text"
           placeholder="사용자명을 입력하세요"
           value={formData.username}
           onChange={onChange}
           required
           disabled={isLoading}
-          className="h-11 md:h-12 text-base"
+          className="fintech-input w-full"
         />
       </div>
-      <div className="space-y-3">
-        <Label htmlFor="password" className="text-base md:text-lg">비밀번호</Label>
-        <Input
+      <div className="space-y-2">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gw-gray-300"
+        >
+          비밀번호
+        </label>
+        <input
           id="password"
+          name="password"
           type="password"
           placeholder="••••••••"
           value={formData.password}
           onChange={onChange}
           required
           disabled={isLoading}
-          className="h-11 md:h-12 text-base"
+          className="fintech-input w-full"
         />
       </div>
-      <Button className="w-full h-11 md:h-12 text-base md:text-lg" type="submit" disabled={isLoading}>
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="cursor-pointer w-full fintech-btn-primary py-4 text-base font-medium flex items-center justify-center gap-2"
+      >
         {isLoading ? (
           <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+            <Loader2 className="h-5 w-5 animate-spin" />
             로그인 중...
           </>
         ) : (
           "로그인"
         )}
-      </Button>
-    </CardContent>
+      </button>
+    </div>
   );
 }

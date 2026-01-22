@@ -1,63 +1,95 @@
-import { Search, Sparkles, Mail } from "lucide-react";
+import { Search, Sparkles, Mail, ArrowRight } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 const steps = [
   {
-    num: 1,
+    num: "01",
     icon: Search,
     title: "종목 검색",
     description: "관심 있는 미국 주식을 검색하세요. 1분이면 충분해요.",
   },
   {
-    num: 2,
+    num: "02",
     icon: Sparkles,
-    title: "리포트 생성",
-    description: "토큰을 사용해 AI 분석 리포트를 즉시 생성하세요.",
+    title: "AI가 종합 분석",
+    description: "뉴스와 거시경제 데이터를 종합해 객관적 보고서를 생성해요.",
   },
   {
-    num: 3,
+    num: "03",
     icon: Mail,
-    title: "바로 확인",
-    description: "생성된 리포트를 바로 확인하세요. 호재/악재 한눈에 파악.",
+    title: "아침에 확인",
+    description: "출근 전 이메일로 애널리스트 보고서를 받아보세요.",
   },
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section className="py-20 md:py-32 px-6 bg-white dark:bg-gw-black">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gw-black dark:text-white">
+    <section className="py-24 md:py-32 px-4 md:px-6 bg-gw-gray-900 relative overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gw-black/50 via-transparent to-gw-black/50" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <ScrollReveal className="mb-16 md:mb-24 text-center">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="fintech-badge">
+              <span className="w-1.5 h-1.5 rounded-full bg-gw-green" />
+              How It Works
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
             3분 만에 시작
           </h2>
-          <p className="text-lg text-gw-gray-600 dark:text-gw-gray-400">
+          <p className="mt-6 text-lg text-gw-gray-400">
             복잡한 설정 없이, 바로 시작하세요
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+        {/* Steps Grid */}
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
           {steps.map((step, index) => (
-            <div key={step.num} className="relative">
-              {/* 연결선 (데스크탑) */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-px bg-gw-gray-200 dark:bg-gw-gray-700" />
-              )}
-
-              <div className="text-center">
-                <div className="relative inline-flex">
-                  <div className="w-16 h-16 rounded-2xl bg-gw-green/10 flex items-center justify-center mb-6">
-                    <step.icon className="w-7 h-7 text-gw-green" />
-                  </div>
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gw-green text-white text-xs font-bold flex items-center justify-center">
-                    {step.num}
-                  </span>
+            <div key={step.num} className="relative group h-full">
+              {/* Step Card */}
+              <div className="relative h-full fintech-card p-6 md:p-8">
+                {/* Step Number */}
+                <div className="text-xs font-mono text-gw-green/40 mb-4">
+                  Step {step.num}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gw-black dark:text-white">{step.title}</h3>
-                <p className="text-gw-gray-600 dark:text-gw-gray-400 leading-relaxed">
+
+                {/* Icon Container */}
+                <div className="relative z-10 fintech-icon fintech-icon-lg mb-6 group-hover:bg-gw-green/20 transition-colors">
+                  <step.icon className="w-6 h-6" strokeWidth={1.5} />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 relative z-10">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-base text-gw-gray-400 leading-relaxed relative z-10">
                   {step.description}
                 </p>
               </div>
+
+              {/* Arrow to next (Mobile) */}
+              {index < steps.length - 1 && (
+                <div className="md:hidden flex justify-center py-4">
+                  <ArrowRight className="w-5 h-5 text-gw-green/40 rotate-90" />
+                </div>
+              )}
             </div>
           ))}
+        </div>
+
+        {/* Bottom CTA Hint */}
+        <div className="mt-16 md:mt-20 text-center">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gw-green/5 border border-gw-green/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-gw-green animate-pulse" />
+            <span className="text-sm text-gw-gray-400">
+              지금 사전등록하고 가장 먼저 시작하세요
+            </span>
+          </div>
         </div>
       </div>
     </section>

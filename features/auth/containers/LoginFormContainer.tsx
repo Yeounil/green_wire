@@ -1,6 +1,5 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
 import { useLoginForm } from "../hooks/useLoginForm";
 import { LoginFormHeader } from "../components/Login/LoginFormHeader";
 import { LoginFormFields } from "../components/Login/LoginFormFields";
@@ -16,9 +15,9 @@ export function LoginFormContainer() {
     useLoginForm();
 
   return (
-    <Card className="w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+    <div className="w-full fintech-card-static rounded-2xl overflow-hidden">
       <LoginFormHeader />
-      <div className="p-6 pt-0 space-y-6">
+      <div className="px-6 md:px-8 pb-6 space-y-6">
         <form onSubmit={handleSubmit}>
           <LoginFormFields
             formData={formData}
@@ -30,6 +29,6 @@ export function LoginFormContainer() {
         <SocialLoginSection />
       </div>
       <LoginFormFooter />
-    </Card>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CardFooter } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 /**
  * LoginFormFooter Component
@@ -7,16 +7,17 @@ import { CardFooter } from "@/components/ui/card";
  */
 export function LoginFormFooter() {
   return (
-    <CardFooter className="flex flex-col gap-4 text-center text-base md:text-lg px-6 pb-8">
-      <p className="text-muted-foreground">
+    <div className="px-6 md:px-8 py-5 border-t border-white/5 text-center bg-white/[0.02]">
+      <p className="text-gw-gray-400">
         계정이 없으신가요?{" "}
         <Link
           href="/register"
-          className="font-medium text-primary underline-offset-4 hover:underline"
+          className="inline-flex items-center gap-1 text-gw-green font-medium hover:underline transition-colors"
         >
           가입하기
+          <ArrowRight className="w-4 h-4" />
         </Link>
       </p>
-    </CardFooter>
+    </div>
   );
 }

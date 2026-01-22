@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_KR, Caveat } from "next/font/google";
+import { Inter, Noto_Sans_KR, Caveat, Bebas_Neue, Syne } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./providers";
@@ -31,6 +31,24 @@ const caveat = Caveat({
   display: "swap",
   preload: true,
   variable: "--font-caveat",
+});
+
+// Bebas Neue - Brutalist 디스플레이 폰트
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  preload: true,
+  variable: "--font-bebas",
+});
+
+// Syne - Brutalist 모던 폰트
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  preload: true,
+  variable: "--font-syne",
 });
 
 
@@ -81,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning className={`${inter.variable} ${notoSansKR.variable} ${caveat.variable}`}>
+    <html lang="ko" suppressHydrationWarning className={`${inter.variable} ${notoSansKR.variable} ${caveat.variable} ${bebasNeue.variable} ${syne.variable}`}>
       <head>
         {/* Pretendard 폰트 CDN */}
         <link

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 
 const categories = ["서비스", "요금", "기타"] as const;
 type Category = typeof categories[number];
@@ -10,7 +10,7 @@ const faqs: Record<Category, { q: string; a: string }[]> = {
   서비스: [
     {
       q: "리포트에 뭐가 들어있나요?",
-      a: "감성 분석(호재/악재/중립 분류), 핵심 요약, 주가 영향 예측, 경쟁사 분석, 리스크 요인, 투자 권고까지 포함됩니다. 단순 뉴스 나열이 아니라 분석된 인사이트를 제공합니다.",
+      a: "뉴스 감성 분석(호재/악재/중립), 거시경제 지표, 시장 데이터를 종합한 객관적 분석 보고서입니다. 중립적 시각의 데이터 기반 애널리스트 리포트로, 투자 판단에 필요한 팩트를 제공합니다.",
     },
     {
       q: "리포트는 어떻게 생성하나요?",
@@ -61,17 +61,27 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-20 md:py-32 px-6 bg-white dark:bg-gw-black">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-10 md:mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gw-black dark:text-white">
+    <section className="py-24 md:py-32 px-4 md:px-6 bg-gw-gray-900 relative overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gw-black/50 via-transparent to-gw-black/50" />
+
+      <div className="max-w-3xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="mb-12 md:mb-16 text-center">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="fintech-badge">
+              <span className="w-1.5 h-1.5 rounded-full bg-gw-green" />
+              FAQ
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
             자주 묻는 질문
           </h2>
         </div>
 
-        {/* 세그먼트 컨트롤 */}
+        {/* Category Tabs */}
         <div className="flex justify-center mb-8" role="tablist" aria-label="FAQ 카테고리">
-          <div className="inline-flex p-1 bg-gw-gray-100 dark:bg-gw-gray-800 rounded-lg">
+          <div className="inline-flex p-1 rounded-xl bg-white/5">
             {categories.map((category) => (
               <button
                 key={category}
@@ -79,11 +89,14 @@ export default function FAQSection() {
                 role="tab"
                 aria-selected={activeCategory === category}
                 aria-controls={`faq-panel-${category}`}
-                className={`cursor-pointer px-5 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
-                  activeCategory === category
-                    ? "bg-white dark:bg-gw-gray-900 text-gw-black dark:text-white shadow-sm"
-                    : "text-gw-gray-500 hover:text-gw-gray-700 dark:hover:text-gw-gray-300"
-                }`}
+                className={`
+                  cursor-pointer px-5 py-2.5 text-sm font-medium rounded-lg
+                  transition-all duration-200
+                  ${activeCategory === category
+                    ? "bg-gw-green text-gw-black shadow-lg shadow-gw-green/20"
+                    : "text-gw-gray-400 hover:text-white"
+                  }
+                `}
               >
                 {category}
               </button>
@@ -91,7 +104,7 @@ export default function FAQSection() {
           </div>
         </div>
 
-        {/* FAQ 목록 */}
+        {/* FAQ List */}
         <div
           className="space-y-3"
           role="tabpanel"
@@ -104,23 +117,38 @@ export default function FAQSection() {
             return (
               <div
                 key={i}
-                className="border border-gw-gray-200 dark:border-gw-gray-700 rounded-xl overflow-hidden bg-gw-gray-50 dark:bg-gw-gray-900"
+                className={`
+                  fintech-card-static overflow-hidden transition-all duration-200
+                  ${isOpen ? "border-gw-green/30" : ""}
+                `}
               >
                 <button
                   onClick={() => setOpenFaq(isOpen ? null : i)}
                   aria-expanded={isOpen}
                   aria-controls={faqId}
-                  className="cursor-pointer w-full px-6 py-5 text-left flex justify-between items-center gap-4 hover:bg-gw-gray-100 dark:hover:bg-gw-gray-800 transition-colors"
+                  className="cursor-pointer w-full px-5 py-4 text-left flex justify-between items-center gap-4 hover:bg-white/5 transition-colors"
                 >
-                  <span className="font-medium text-gw-black dark:text-white">
-                    {faq.q}
+                  <span className="flex items-center gap-3">
+                    <span className="text-gw-green/50 font-mono text-sm">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="font-medium text-white text-base">
+                      {faq.q}
+                    </span>
                   </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-gw-gray-400 shrink-0 transition-transform duration-300 ease-out ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                    aria-hidden="true"
-                  />
+                  <div className={`
+                    w-8 h-8 flex items-center justify-center rounded-lg shrink-0
+                    transition-all duration-200
+                    ${isOpen ? "bg-gw-green/20" : "bg-white/5"}
+                  `}>
+                    <ChevronDown
+                      className={`
+                        w-4 h-4 transition-transform duration-300
+                        ${isOpen ? "rotate-180 text-gw-green" : "text-gw-gray-400"}
+                      `}
+                      aria-hidden="true"
+                    />
+                  </div>
                 </button>
                 <div
                   id={faqId}
@@ -130,8 +158,10 @@ export default function FAQSection() {
                   }}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 pb-6 pt-1 text-gw-gray-600 dark:text-gw-gray-400 leading-relaxed">
-                      {faq.a}
+                    <div className="px-5 pb-5 pt-0 text-base text-gw-gray-400 leading-relaxed border-t border-white/5 ml-9">
+                      <div className="pt-4">
+                        {faq.a}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -140,15 +170,21 @@ export default function FAQSection() {
           })}
         </div>
 
-        <p className="mt-10 text-center text-sm text-gw-gray-500">
-          찾는 내용이 없으면{" "}
-          <a
-            href="mailto:help@greenwire.kr"
-            className="cursor-pointer text-gw-green hover:underline"
-          >
-            help@greenwire.kr
-          </a>
-        </p>
+        {/* Contact Info */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 border border-white/10">
+            <Mail className="w-4 h-4 text-gw-gray-400" />
+            <span className="text-sm text-gw-gray-400">
+              찾는 내용이 없으면
+            </span>
+            <a
+              href="mailto:help@greenwire.kr"
+              className="text-sm text-gw-green font-medium hover:underline"
+            >
+              help@greenwire.kr
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

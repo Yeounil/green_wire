@@ -1,4 +1,5 @@
-import { X, Check } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
+import { Check, X } from "lucide-react";
 
 const comparisons = [
   {
@@ -24,71 +25,102 @@ const comparisons = [
   {
     item: "분석 범위",
     before: "보이는 뉴스만",
-    after: "주요 매체 종합",
+    after: "뉴스 + 거시경제 종합",
   },
 ];
 
 export default function ComparisonSection() {
   return (
-    <section className="py-20 md:py-32 px-6 bg-gw-gray-50 dark:bg-gw-gray-900">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gw-black dark:text-white">
-            기존 방식 vs Green Wire
+    <section className="py-24 md:py-32 px-4 md:px-6 bg-gw-gray-900 relative overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gw-black/50 via-transparent to-gw-black/50" />
+
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Section Header */}
+        <ScrollReveal className="mb-16 md:mb-20">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="fintech-badge">
+              <span className="w-1.5 h-1.5 rounded-full bg-gw-green" />
+              Comparison
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight">
+            기존 방식 vs
+          </h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gw-green leading-tight tracking-tight fintech-text-glow">
+            Green Wire
           </h2>
           <p className="text-lg text-gw-gray-600 dark:text-gw-gray-400">
             뉴스 확인, 이렇게 달라집니다
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* 비교 테이블 */}
-        <div className="bg-white dark:bg-gw-gray-800 rounded-2xl border border-gw-gray-200 dark:border-gw-gray-700 overflow-hidden">
-          {/* 헤더 */}
-          <div className="grid grid-cols-3 bg-gw-gray-50 dark:bg-gw-gray-900 border-b border-gw-gray-200 dark:border-gw-gray-700">
-            <div className="px-4 py-4 md:px-6">
-              <span className="text-sm font-medium text-gw-gray-500">항목</span>
+        {/* Comparison Table - Modern Fintech Style */}
+        <div className="fintech-card-static overflow-hidden">
+          {/* Header */}
+          <div className="grid grid-cols-3">
+            <div className="px-4 py-4 md:px-6 border-b border-white/5 bg-gw-black/30">
+              <span className="text-xs font-medium text-gw-gray-400 uppercase tracking-wider">
+                항목
+              </span>
             </div>
-            <div className="px-4 py-4 md:px-6 text-center border-l border-gw-gray-200 dark:border-gw-gray-700">
-              <span className="text-sm font-medium text-gw-gray-500">
+            <div className="px-4 py-4 md:px-6 text-center border-b border-white/5 bg-gw-black/30">
+              <span className="text-xs font-medium text-gw-gray-400 uppercase tracking-wider">
                 기존 방식
               </span>
             </div>
-            <div className="px-4 py-4 md:px-6 text-center border-l border-gw-gray-200 dark:border-gw-gray-700 bg-gw-green/5">
-              <span className="text-sm font-medium text-gw-green">
+            <div className="px-4 py-4 md:px-6 text-center border-b border-white/5 bg-gw-green/5">
+              <span className="text-xs font-medium text-gw-green uppercase tracking-wider">
                 Green Wire
               </span>
             </div>
           </div>
 
-          {/* 비교 항목 */}
+          {/* Rows */}
           {comparisons.map((row, i) => (
             <div
               key={row.item}
               className={`grid grid-cols-3 ${
-                i < comparisons.length - 1
-                  ? "border-b border-gw-gray-100 dark:border-gw-gray-700"
-                  : ""
+                i < comparisons.length - 1 ? "border-b border-white/5" : ""
               }`}
             >
-              <div className="px-4 py-4 md:px-6 flex items-center">
-                <span className="text-sm font-medium text-gw-black dark:text-white">
+              {/* Item */}
+              <div className="px-4 py-5 md:px-6 flex items-center bg-gw-black/20">
+                <span className="text-base font-medium text-white">
                   {row.item}
                 </span>
               </div>
-              <div className="px-4 py-4 md:px-6 flex items-center justify-center gap-2 border-l border-gw-gray-100 dark:border-gw-gray-700">
-                <X className="w-4 h-4 text-gw-gray-400 shrink-0 hidden md:block" />
-                <span className="text-sm text-gw-gray-500 text-center">
-                  {row.before}
-                </span>
+
+              {/* Before */}
+              <div className="px-4 py-5 md:px-6 flex items-center justify-center relative">
+                <div className="flex items-center gap-2">
+                  <X className="w-4 h-4 text-gw-gray-500 shrink-0" />
+                  <span className="text-base text-gw-gray-500 text-center line-through decoration-gw-gray-600">
+                    {row.before}
+                  </span>
+                </div>
               </div>
-              <div className="px-4 py-4 md:px-6 flex items-center justify-center gap-2 border-l border-gw-gray-100 dark:border-gw-gray-700 bg-gw-green/5">
-                <Check className="w-4 h-4 text-gw-green shrink-0 hidden md:block" />
-                <span className="text-sm text-gw-black dark:text-white font-medium text-center">
-                  {row.after}
-                </span>
+
+              {/* After */}
+              <div className="px-4 py-5 md:px-6 flex items-center justify-center bg-gw-green/5 group hover:bg-gw-green/10 transition-colors">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-gw-green shrink-0" />
+                  <span className="text-base text-white font-medium text-center">
+                    {row.after}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Bottom Accent */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-gw-green/30" />
+          <span className="text-sm text-gw-gray-400 tracking-wider">
+            시간 절약 = 기회 포착
+          </span>
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-gw-green/30" />
         </div>
       </div>
     </section>
