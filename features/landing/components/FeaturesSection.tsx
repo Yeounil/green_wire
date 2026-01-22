@@ -141,6 +141,7 @@ export default function FeaturesSection() {
           </ScrollReveal>
 
           {/* 기능 3: 온디맨드 리포트 */}
+          <ScrollReveal>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <span className="text-sm font-medium text-gw-green mb-4 block">
