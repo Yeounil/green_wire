@@ -18,9 +18,9 @@ const comparisons = [
     after: "5분",
   },
   {
-    item: "빈도",
+    item: "생성 방식",
     before: "불규칙 (시간 날 때)",
-    after: "매일 아침 이메일",
+    after: "토큰으로 즉시 생성",
   },
   {
     item: "분석 범위",
@@ -50,8 +50,8 @@ export default function ComparisonSection() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gw-green leading-tight tracking-tight fintech-text-glow">
             Green Wire
           </h2>
-          <p className="mt-6 text-lg text-gw-gray-400">
-            매일 아침 뉴스 확인, 이렇게 달라집니다
+          <p className="text-lg text-gw-gray-600 dark:text-gw-gray-400">
+            뉴스 확인, 이렇게 달라집니다
           </p>
         </ScrollReveal>
 

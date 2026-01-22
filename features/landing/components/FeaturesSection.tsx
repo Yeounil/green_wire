@@ -140,38 +140,34 @@ export default function FeaturesSection() {
           </div>
           </ScrollReveal>
 
-          {/* Feature 3: 이메일 리포트 */}
-          <ScrollReveal>
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-sm font-mono text-gw-green/60">03</span>
-                <div className="h-px flex-1 bg-gradient-to-r from-gw-green/30 to-transparent" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">
-                출근 전 5분
+          {/* 기능 3: 온디맨드 리포트 */}
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div>
+              <span className="text-sm font-medium text-gw-green mb-4 block">
+                03 — 온디맨드 리포트
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gw-black dark:text-white">
+                필요할 때 바로,
                 <br />
-                <span className="text-gw-green">어젯밤 뉴스 확인</span>
+                AI 분석 리포트
               </h3>
-              <p className="text-base text-gw-gray-400 leading-relaxed">
-                관심 종목을 등록하면 매일 아침 이메일로 종합 애널리스트 보고서가
-                도착합니다. 뉴스와 거시경제를 객관적 시각으로 분석해 드려요.
+              <p className="text-gw-gray-600 dark:text-gw-gray-400 leading-relaxed">
+                토큰을 사용해 원하는 종목의 AI 분석 리포트를 즉시 생성하세요.
+                필요할 때 바로 확인할 수 있어요.
               </p>
             </div>
 
-            {/* Demo Card */}
-            <div className="lg:col-span-7 lg:col-start-6">
-              <div className="fintech-card-static p-6">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="fintech-icon-lg fintech-icon bg-gradient-to-br from-gw-green/20 to-gw-green/5">
-                    <Bell className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-lg font-bold text-white">
-                      Green Wire
-                    </p>
-                    <p className="text-xs text-gw-gray-500">오전 7:00</p>
-                  </div>
+            {/* 알림 미니 데모 */}
+            <div className="p-6 bg-gw-gray-50 dark:bg-gw-gray-900 border border-gw-gray-200 dark:border-gw-gray-700 rounded-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-gw-green/10 flex items-center justify-center">
+                  <Bell className="w-5 h-5 text-gw-green" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-gw-black dark:text-white">
+                    Green Wire
+                  </p>
+                  <p className="text-xs text-gw-gray-500">방금 전</p>
                 </div>
 
                 <div className="bg-gw-black/50 rounded-xl p-4 border border-white/5">

@@ -5,8 +5,8 @@ const steps = [
   {
     num: "01",
     icon: Search,
-    title: "종목 등록",
-    description: "관심 있는 미국 주식을 검색해서 등록하세요. 5분이면 충분해요.",
+    title: "종목 검색",
+    description: "관심 있는 미국 주식을 검색하세요. 1분이면 충분해요.",
   },
   {
     num: "02",
